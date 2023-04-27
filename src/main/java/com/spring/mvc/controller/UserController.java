@@ -31,7 +31,7 @@ public class UserController {
 		return "redirect:lovedbooks";
 	}
 	
-	@RequestMapping("/addToRaedLaterBooks")
+	@RequestMapping("/addToReadLaterBooks")
 	public String addToReadLaterBooks(@RequestParam int id, HttpSession session){
 //		System.out.println("inside addToReadLaterBooks book id="+id+"email "+session.getAttribute("email"));
 		String email= (String) session.getAttribute("email");

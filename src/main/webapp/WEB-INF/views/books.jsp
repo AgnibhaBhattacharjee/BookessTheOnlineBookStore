@@ -26,6 +26,7 @@
 	color: red;
 }
 
+
 </style>
 </head>
 <body>
@@ -132,8 +133,14 @@
 								if (userName != null) {
 						%>
 						<td>
-						<a href="addToLovedBooks?id=${book.id }"><button type="button" class="btn btn-link"><span class="bi bi-heart"></span></button></a>
-						<a href="addToRaedLaterBooks?id=${book.id }"><button type="button" class="btn btn-link"><span class="bi bi-bookmark-check"></span></button></a></td>
+						<a href="addToLovedBooks?id=${book.id }">
+						<span class="tt" data-bs-placement="buttom" title="Add to Loved Books"><button type="button" class="btn btn-link" ><span class="bi bi-heart"></span>
+						</button></span>
+						</a>
+						<a href="addToReadLaterBooks?id=${book.id }"><span class="tt" data-bs-placement="buttom" title="Add to Read Later Books"><button type="button" class="btn btn-link"><span class="bi bi-bookmark-check"></span>
+						</button></span>
+						</a>
+						</td>
 						<%
 							}
 						%>
@@ -160,7 +167,11 @@
 		</table>
 	</div>
 
-
-
+<script >
+const tooltips= document.querySelection('.tt')
+tooltips.forEach(t => {
+	new bootstrap.Tooltip(t)
+})
+</script>
 </body>
 </html>
