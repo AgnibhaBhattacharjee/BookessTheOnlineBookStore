@@ -19,11 +19,13 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 <style>
 .error {
 	color: red;
 }
+
 </style>
 </head>
 <body>
@@ -107,8 +109,8 @@
 						String email = (String) session.getAttribute("email");
 						if (email != null) {
 					%>
-					<th scope="col">Add to Loved Books</th>
-					<th scope="col">Add to Read Later</th>
+					<th scope="col">Actions</th>
+					<!--  <th scope="col">Add to Read Later</th>-->
 					<%
 						}
 					%>
@@ -129,20 +131,9 @@
 							String userName = (String) session.getAttribute("userName");
 								if (userName != null) {
 						%>
-						<td><a href="addToLovedBooks?id=${book.id }"><svg
-									xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  								<path
-										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-						</svg></a></td>
-						<td><a href="addToRaedLaterBooks?id=${book.id }"><svg
-									xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
-  								<path
-										d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z" />
-  								<path
-										d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z" />
-						</svg></a></td>
+						<td>
+						<a href="addToLovedBooks?id=${book.id }"><button type="button" class="btn btn-link"><span class="bi bi-heart"></span></button></a>
+						<a href="addToRaedLaterBooks?id=${book.id }"><button type="button" class="btn btn-link"><span class="bi bi-bookmark-check"></span></button></a></td>
 						<%
 							}
 						%>

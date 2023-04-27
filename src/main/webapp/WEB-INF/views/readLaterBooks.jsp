@@ -18,6 +18,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
 
 <style>
 .error {
@@ -42,17 +43,17 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="index.jsp">Home</a></li>
 					<%
-					String id = (String) session.getAttribute("email");
-		
-					if (id == null) {
+						String id = (String) session.getAttribute("email");
+
+						if (id == null) {
 					%>
 					<li class="nav-item"><a class="nav-link" href="login">Login</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="register">Register</a>
 					</li>
 					<%
-					}
-					if (id != null) {
+						}
+						if (id != null) {
 					%>
 					<li class="nav-item"><a class="nav-link" href="logout">Logout</a>
 					<li class="nav-item"><a class="nav-link" href="books">Books</a>
@@ -68,25 +69,28 @@
 					<li class="nav-item"><a class="nav-link" href="users">View
 							All Users</a></li>-->
 					<%
-					}
-					
+						}
 					%>
-					<%String Name= (String)session.getAttribute("userName");
-					if(Name!=null){
-						%>
+					<%
+						String Name = (String) session.getAttribute("userName");
+						if (Name != null) {
+					%>
 					<!-- <li class="nav-item"><a class="nav-link" href="logout">Logout</a>
 					</li> -->
-					<!--  <li class="nav-item"><h5 class="nav-link" style="color: #2ecc71">Welcome <%=Name %></h5>-->
+					<!--  <li class="nav-item"><h5 class="nav-link" style="color: #2ecc71">Welcome <%=Name%></h5>-->
 					</li>
 					<%
-				   }
-				   %>
+						}
+					%>
 
 				</ul>
-				<%if(Name!=null){
-					%>
-				<span class="navbar-text" style="color: #2ecc71">Welcome <%=Name %></span>
-				<% }%>
+				<%
+					if (Name != null) {
+				%>
+				<span class="navbar-text" style="color: #2ecc71">Welcome <%=Name%></span>
+				<%
+					}
+				%>
 			</div>
 		</div>
 	</nav>
@@ -107,12 +111,13 @@
 					<th scope="col">Book Genres</th>
 					<th scope="col">Author name</th>
 					<%
-					String email = (String) session.getAttribute("email");
-					if(email!=null){
-						%>
-					<!--<th scope="col">Remove From Read Later Books</th>-->
-					<!--  <th scope="col">Add to Read Later</th>-->
-					<% }
+						String email = (String) session.getAttribute("email");
+						if (email != null) {
+					%>
+
+					<th scope="col">Actions</th>
+					<%
+						}
 					%>
 
 
@@ -127,13 +132,13 @@
 						<td>${book.bookName }</td>
 						<td>${book.bookGenres }</td>
 						<td>${book.authorName }</td>
-						<% String userName= (String)session.getAttribute("userName"); 
-						if(userName!=null){
+						<%
+							String userName = (String) session.getAttribute("userName");
+								if (userName != null) {
 						%>
-						<!--  <td><a href="addToLovedBooks?id=${book.id }">Add To Loved Books</a></td>-->
-						<!--<td><a href="removeFromRaedLaterBooks?id=${book.id }">Remove From Read Later Books</a></td>-->
-						<% 
-						}
+						<td><a href="removeFromReadLaterBooks?id=${book.id }"><button type="button" class="btn btn-link"><span class="bi bi-trash"></span></button></a></td>
+						<%
+							}
 						%>
 
 						<!--<c:if test="${task.taskcompleted}">

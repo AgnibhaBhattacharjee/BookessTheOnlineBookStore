@@ -77,7 +77,16 @@ public class UserDao {
 			User updateUser= session.get(User.class, email);
 			Book book= session.get(Book.class, bookId);
 			List<Book> lovedBooks=updateUser.getLovedBooks();
-			lovedBooks.add(book);
+			boolean flag=true;
+			for(Book b:lovedBooks){
+				if(b.getId()==book.getId()){
+					flag=false;
+				}
+			}
+			if(flag==true){
+				lovedBooks.add(book);
+			}
+			
 			lovedBooks.forEach(e->System.out.println(e));
 			Transaction transaction= session.beginTransaction();
 			session.update(updateUser);
@@ -95,7 +104,16 @@ public class UserDao {
 			User updateUser= session.get(User.class, email);
 			Book book= session.get(Book.class, bookId);
 			List<Book> readLaterBooks=updateUser.getReadLaterBooks();
-			readLaterBooks.add(book);
+			boolean flag=true;
+			for(Book b:readLaterBooks){
+				if(b.getId()==book.getId()){
+					flag=false;
+				}
+			}
+			if(flag==true){
+				readLaterBooks.add(book);
+			}
+			
 			readLaterBooks.forEach(e->System.out.println(e));
 			Transaction transaction= session.beginTransaction();
 			session.update(updateUser);
@@ -161,6 +179,26 @@ public class UserDao {
 		
 	}
 	public void removeFromReadLaterBooks(String email, int bookId) {
+		// TODO Auto-generated method stub
+		try{
+			Session session= factory.openSession();
+			User updateUser= session.get(User.class, email);
+			Book book= session.get(Book.class, bookId);
+			List<Book> readLaterBooks=updateUser.getReadLaterBooks();
+			readLaterBooks.remove(book);
+			updateUser.setReadLaterBooks(readLaterBooks);
+			updateUser.getReadLaterBooks().forEach(e->System.out.println(e));
+			Transaction transaction= session.beginTransaction();
+			session.update(updateUser);
+			transaction.commit();
+			session.close();
+			
+		}catch(RuntimeException e){
+			throw new RuntimeException(e.getMessage());
+		}
+		
+	}
+	public void removeFromReadLaterBooks2(String email, int bookId) {
 		// TODO Auto-generated method stub
 		try{
 			Session session= factory.openSession();

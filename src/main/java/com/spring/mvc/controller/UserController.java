@@ -46,14 +46,14 @@ public class UserController {
 		System.out.println("inside removeFromLovedBooks book id="+id+"email "+session.getAttribute("email"));
 		String email= (String) session.getAttribute("email");
 		userService.removeFromLovedBooks(email,id);
-		return "redirect:books";
+		return "redirect:lovedbooks";
 	}
-	@RequestMapping("/removeFromRaedLaterBooks")
+	@RequestMapping("/removeFromReadLaterBooks")
 	public String removeFromRaedLaterBooks(@RequestParam int id, HttpSession session){
-		System.out.println("inside removeFromRaedLaterBooks book id="+id+"email "+session.getAttribute("email"));
+		System.out.println("inside removeFromRaedLaterBooks book id="+id+ " email "+session.getAttribute("email"));
 		String email= (String) session.getAttribute("email");
 		userService.removeFromReadLaterBooks(email, id);
-		return "redirect:books";
+		return "redirect:readlaterbooks";
 	}
 	
 	

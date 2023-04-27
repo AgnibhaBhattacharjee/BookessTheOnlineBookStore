@@ -18,6 +18,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
 
 <style>
 .error {
@@ -104,14 +105,14 @@
 					<th scope="col">Book Name</th>
 					<th scope="col">Book Genres</th>
 					<th scope="col">Author name</th>
-					<!--<%
+					<%
 					String email = (String) session.getAttribute("email");
 					if(email!=null){
 						%>
-						  <th scope="col">Add to Loved Books</th>
-						<th scope="col">Add to Read Later</th>
+					
+					<th scope="col">Actions</th>
 					<% }
-					%>-->
+					%>
 
 
 					<!--<th scope="col">Assigned To</th>
@@ -128,8 +129,8 @@
 						<% String userName= (String)session.getAttribute("userName"); 
 						if(userName!=null){
 						%>
-						<!--<td><a href="removeFromLovedBooks?id=${book.id }">Remove From Loved Books</a></td>
-						  <td><a href="addToRaedLaterBooks?id=${book.id }">Add Read Later Books</a></td>-->
+						<td><a href="removeFromLovedBooks?id=${book.id }"><button type="button" class="btn btn-link"><span class="bi bi-trash"></span></button></a></td>
+
 						<%
 						}
 						%>
